@@ -1,4 +1,6 @@
 import { React } from 'react';
+import { Route } from "react-router-dom";
+import Confirm from "./Confirmation";
 
 
 export default function OrderForm(props) {
@@ -18,7 +20,9 @@ const onSubmit = evt => {
 
 
 
-return ( <form id="pizza-form" onSubmit={onSubmit}>
+return ( 
+<>
+<form id="pizza-form" onSubmit={onSubmit}>
     <section className="form-container">
         <h1>Tell Us What You Like</h1>
         <p>{errors.name}</p>
@@ -103,6 +107,9 @@ return ( <form id="pizza-form" onSubmit={onSubmit}>
 
     </section>
 </form>
-
+<Route path="/Confirmation">
+    <Confirm />
+</Route>
+</>
 )
 }

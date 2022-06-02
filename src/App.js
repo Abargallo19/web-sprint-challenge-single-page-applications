@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-//https://reqres.in/api/orders
+import schema from "./Schema";
+import * as yup from "yup";
 import { Route, Link, Switch } from "react-router-dom";
 import Home from "./Components/Homepage";
 import Form from "./Components/OrderForm";
-import Confirm from "./Components/Confirmation";
+
 
 const initialFormValues = {
   //text
@@ -39,10 +40,27 @@ const App = () => {
 const [orderHistory, setOrderHistory] = useState(pastOrders);
 const [formValues,setFormValues] = useState(initialFormValues);
 const [formErrors, setFormErrors] = useState(initialFormErrors);
-//const [disabled, setDisabled] = useState(initialDisabled);
+const [disabled, setDisabled] = useState(initialDisabled);
+
+//post
+const postNewOrder = newOrder => {
+  axios.post("https://reqres.in/api/orders", newOrder)
+  .then(res => {
+    setOrderHistory([res.data, ...orderHistory]);
+  })
+  .catch(err => console.error(err))
+  .finally(() => setFormValues(initialFormValues))
+};
+
+const validate = (name, value) => {
+  yup.reach(schema, name).validate(value)
+    .then(() => setFormErrors({...formErrors, [name]: ''}))
+    .catch(err => setFormErrors({...formErrors, [name]: err.errors[0]}))
+}
 
 //event handlers
 const inputChange = (name, value) => {
+  validate(name, value)
   setFormValues({...formValues, [name]: value});
 }
 
@@ -53,13 +71,17 @@ const newOrder = {
   toppings: ["pepperoni", "sausage", "olives", "chicken"].filter(top => !!formValues[top]),
   special: formValues.special
 }
-
+postNewOrder(newOrder);
 }
 
 //side effects
 // useEffect(() => {
+//   getOrders()
+// }, [])
 
-// })
+useEffect(() => {
+  schema.isValid(formValues).then(valid => setDisabled(!valid))
+}, [formValues])
 
 
 
