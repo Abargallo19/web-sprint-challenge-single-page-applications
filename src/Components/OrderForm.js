@@ -50,7 +50,7 @@ return ( <form id="pizza-form" onSubmit={onSubmit}>
                    <option value='large'>Large</option>
                </select>
             </label>
-
+    <div className='toppings-checklist'>
         <h3>Toppings</h3>
             <label>Pepperoni
                 <input
@@ -60,7 +60,31 @@ return ( <form id="pizza-form" onSubmit={onSubmit}>
                 checked={values.pepperoni}
                 />
             </label>
-
+            <label>Sausage
+                <input
+                name='pepperoni'
+                type="checkbox"
+                onChange={onChange}
+                checked={values.sausage}
+                />
+            </label>
+            <label>Olives
+                <input
+                name='pepperoni'
+                type="checkbox"
+                onChange={onChange}
+                checked={values.olives}
+                />
+            </label>
+            <label>Chicken
+                <input
+                name='pepperoni'
+                type="checkbox"
+                onChange={onChange}
+                checked={values.chicken}
+                />
+            </label>
+    </div>
 
             <label>Special Instructions
                 <input 
