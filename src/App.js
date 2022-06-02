@@ -4,8 +4,43 @@ import { Route, Link, Switch } from "react-router-dom";
 import Home from "./Components/Homepage";
 import Form from "./Components/OrderForm";
 
+const initialFormValues = {
+  //text
+  name: '',
+  //dropdown
+  size: '',
+  //checkbox
+  pepperoni: false,
+  sausage: false,
+  olives: false,
+  chicken: false,
+  //text
+  special: ''
+}
+
+const initialFormErrors = {
+  name: '',
+  size: '',
+  pepperoni: '',
+  sausage: '',
+  olives: '',
+  chicken: '',
+  special: '',
+}
+
+const orderHistory = [];
+
+const initialDisabled = true;
 
 const App = () => {
+//state
+const [formValues,setFormValues] = useState(initialFormValues);
+const [formErrors, setFormErrors] = useState(null);
+
+
+
+
+
   return (
     <>
     <nav>
