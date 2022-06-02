@@ -43,7 +43,15 @@ const inputChange = (name, value) => {
   setFormValues({...formValues, [name]: value});
 }
 
-cons
+const formSubmit = () => {
+const newOrder = {
+  name: formValues.name.trim(),
+  size: formValues.size,
+  toppings: ["pepperoni", "sausage", "olives", "chicken"].filter(top => !!formValues[top]),
+  special: formValues.special
+}
+
+}
 
 
 
