@@ -5,7 +5,7 @@ import Confirm from "./Confirmation";
 
 export default function OrderForm(props) {
 
-const { values, errors, change, submit } = props;
+const { values, errors, change, submit, disabled } = props;
 
 const onChange = evt => {
     const { name, value, checked, type } = evt.target;
@@ -15,7 +15,8 @@ const onChange = evt => {
 
 const onSubmit = evt => {
     evt.preventDefault();
-    submit()
+    //setOrders([orders, ...orders])
+   submit();
 }
 
 
@@ -23,10 +24,10 @@ const onSubmit = evt => {
 return ( 
 <>
 <form id="pizza-form" onSubmit={onSubmit}>
-    <section className="form-container">
+    
         <h1>Tell Us What You Like</h1>
         <p>{errors.name}</p>
-        <p>{errors.size}</p>
+        
 
         <div className="ordername">
             <h3>What's the Name for the Order?</h3>
@@ -54,7 +55,7 @@ return (
                    <option value='large'>Large</option>
                </select>
             </label>
-    <div className='toppings-checklist'>
+    
         <h3>Toppings</h3>
             <label>Pepperoni
                 <input
@@ -88,7 +89,7 @@ return (
                 checked={values.chicken}
                 />
             </label>
-    </div>
+    
 
             <label>Special Instructions
                 <input 
@@ -101,11 +102,17 @@ return (
             </label>
         
 
-<input type = 'submit' value = 'Add to Order'/>
+<button 
+id="order-button" 
+disabled={disabled}
+type = 'submit' 
+onSubmit={onSubmit} 
+value = 'Add to Order'
+>Add to Order</button>
 
 
 
-    </section>
+    
 </form>
 <Route path="/Confirmation">
     <Confirm />

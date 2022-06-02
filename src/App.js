@@ -5,52 +5,56 @@ import * as yup from "yup";
 import { Route, Link, Switch } from "react-router-dom";
 import Home from "./Components/Homepage";
 import Form from "./Components/OrderForm";
+import Confirm from "./Components/Confirmation";
 
 
 const initialFormValues = {
-  //text
+ 
   name: '',
-  //dropdown
   size: '',
-  //checkbox
-  pepperoni: false,
-  sausage: false,
-  olives: false,
-  chicken: false,
-  //text
-  special: ''
+    pepperoni: false,
+    sausage: false,
+    olives: false,
+    chicken: false,
+    special: ''
+  
+  
 }
 
 const initialFormErrors = {
   name: '',
   size: '',
-  pepperoni: '',
-  sausage: '',
-  olives: '',
-  chicken: '',
-  special: '',
+   pepperoni: '',
+    sausage: '',
+    olives: '',
+    chicken: '',
+    special: '',
+  
+  
 }
 
-const pastOrders = [];
+
 
 const initialDisabled = true;
 
 const App = () => {
 //state
-const [orderHistory, setOrderHistory] = useState(pastOrders);
+const [orderHistory, setOrderHistory] = useState([]);
 const [formValues,setFormValues] = useState(initialFormValues);
 const [formErrors, setFormErrors] = useState(initialFormErrors);
 const [disabled, setDisabled] = useState(initialDisabled);
 
+// const getOrderHistory = () => {
+//   axios.get("https://reqres.in/api/orders")
+//   .then(res => { console.log(res.data)})
+//   .catch(err => console.error(err))
+// }
+
+
 //post
-const postNewOrder = newOrder => {
-  axios.post("https://reqres.in/api/orders", newOrder)
-  .then(res => {
-    setOrderHistory([res.data, ...orderHistory]);
-  })
-  .catch(err => console.error(err))
-  .finally(() => setFormValues(initialFormValues))
-};
+// const postNewOrder = newOrder => {
+  
+// };
 
 const validate = (name, value) => {
   yup.reach(schema, name).validate(value)
@@ -60,7 +64,7 @@ const validate = (name, value) => {
 
 //event handlers
 const inputChange = (name, value) => {
-  validate(name, value)
+  validate(name, value);
   setFormValues({...formValues, [name]: value});
 }
 
@@ -71,13 +75,20 @@ const newOrder = {
   toppings: ["pepperoni", "sausage", "olives", "chicken"].filter(top => !!formValues[top]),
   special: formValues.special
 }
-postNewOrder(newOrder);
+axios.post(`https://reqres.in/api/orders`, newOrder)
+  .then(res => {
+    setOrderHistory([res.data, ...orderHistory]);
+    setFormValues(initialFormValues);
+    setFormErrors('');
+  })
+
 }
 
-//side effects
 // useEffect(() => {
-//   getOrders()
+//   axios.get(`https://reqres.in/api/orders`)
+//   .then(res => setOrderHistory(res.data))
 // }, [])
+
 
 useEffect(() => {
   schema.isValid(formValues).then(valid => setDisabled(!valid))
@@ -103,7 +114,9 @@ useEffect(() => {
           errors={formErrors}
           submit={formSubmit}
           change={inputChange}
-          // disabled={disabled}
+          disabled={disabled}
+          // orders={orderHistory}
+          // setOrders={setOrderHistory}
         />
       </Route>
       <Route path="/">
@@ -111,6 +124,14 @@ useEffect(() => {
       </Route>
     </Switch>
 
+{
+  orderHistory.map(order => {
+    return (
+      <Confirm key={order.id} details={order} />
+      )
+    }
+  )
+}
 
 
 
