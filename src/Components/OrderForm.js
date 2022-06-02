@@ -3,7 +3,7 @@ import { React } from 'react';
 
 export default function OrderForm(props) {
 
-const { values, errors, disabled, change, submit } = props;
+const { values, errors, change, submit } = props;
 
 const onChange = evt => {
     const { name, value, checked, type } = evt.target;
@@ -62,6 +62,7 @@ return ( <form id="pizza-form" onSubmit={onSubmit}>
 
             <label>Special Instructions
                 <input 
+                id="special-text"
                 name='special'
                 value={values.special}
                 onChange={onChange}
@@ -70,7 +71,7 @@ return ( <form id="pizza-form" onSubmit={onSubmit}>
             </label>
         
 
-<input disabled={disabled} type = 'submit' value = 'Add to Order'/>
+<input type = 'submit' value = 'Add to Order'/>
 
 
 

@@ -39,7 +39,7 @@ const App = () => {
 const [orderHistory, setOrderHistory] = useState(pastOrders);
 const [formValues,setFormValues] = useState(initialFormValues);
 const [formErrors, setFormErrors] = useState(initialFormErrors);
-const [disabled, setDisabled] = useState(initialDisabled);
+//const [disabled, setDisabled] = useState(initialDisabled);
 
 //event handlers
 const inputChange = (name, value) => {
@@ -81,7 +81,7 @@ const newOrder = {
           errors={formErrors}
           submit={formSubmit}
           change={inputChange}
-          disabled={disabled}
+          // disabled={disabled}
         />
       </Route>
       <Route path="/">
