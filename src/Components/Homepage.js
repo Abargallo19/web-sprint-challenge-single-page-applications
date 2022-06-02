@@ -11,11 +11,7 @@ const routeToPizza = () => {
    
 return (
 <div className='home-container'>
-    <img
-    className="home-image"
-    src="../../Assets/Pizza.jpg"
-    alt='picture of pizza'
-    />
+   
     <button 
     id="order-pizza"
     onClick={routeToPizza}

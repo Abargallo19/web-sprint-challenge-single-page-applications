@@ -6,6 +6,7 @@ import { Route, Link, Switch } from "react-router-dom";
 import Home from "./Components/Homepage";
 import Form from "./Components/OrderForm";
 import Confirm from "./Components/Confirmation";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 const initialFormValues = {
