@@ -28,16 +28,22 @@ const initialFormErrors = {
   special: '',
 }
 
-const orderHistory = [];
+const pastOrders = [];
 
 const initialDisabled = true;
 
 const App = () => {
 //state
+const [orderHistory, setOrderHistory] = useState(pastOrders);
 const [formValues,setFormValues] = useState(initialFormValues);
-const [formErrors, setFormErrors] = useState(null);
+const [formErrors, setFormErrors] = useState(initialFormErrors);
 
+//event handlers
+const inputChange = (name, value) => {
+  setFormValues({...formValues, [name]: value});
+}
 
+cons
 
 
 
