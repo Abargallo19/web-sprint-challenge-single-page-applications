@@ -58,9 +58,11 @@ return (
             </label>
     
         <h3>Toppings</h3>
-            <label>Pepperoni
+
+
+        <label>Pepperoni
                 <input
-                name='pepperoni'
+                name="pepperoni"
                 type="checkbox"
                 onChange={onChange}
                 checked={values.pepperoni}
@@ -68,7 +70,7 @@ return (
             </label>
             <label>Sausage
                 <input
-                name='pepperoni'
+                name="ham"
                 type="checkbox"
                 onChange={onChange}
                 checked={values.sausage}
@@ -76,7 +78,7 @@ return (
             </label>
             <label>Olives
                 <input
-                name='pepperoni'
+                name='olives'
                 type="checkbox"
                 onChange={onChange}
                 checked={values.olives}
@@ -84,12 +86,14 @@ return (
             </label>
             <label>Chicken
                 <input
-                name='pepperoni'
+                name='chicken'
                 type="checkbox"
                 onChange={onChange}
                 checked={values.chicken}
                 />
             </label>
+
+       
     
 
             <label>Special Instructions

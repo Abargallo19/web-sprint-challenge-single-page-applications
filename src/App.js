@@ -14,7 +14,7 @@ const initialFormValues = {
   name: '',
   size: '',
     pepperoni: false,
-    sausage: false,
+    ham: false,
     olives: false,
     chicken: false,
     special: ''
@@ -26,7 +26,7 @@ const initialFormErrors = {
   name: '',
   size: '',
    pepperoni: '',
-    sausage: '',
+    ham: '',
     olives: '',
     chicken: '',
     special: '',
@@ -45,17 +45,6 @@ const [formValues,setFormValues] = useState(initialFormValues);
 const [formErrors, setFormErrors] = useState(initialFormErrors);
 const [disabled, setDisabled] = useState(initialDisabled);
 
-// const getOrderHistory = () => {
-//   axios.get("https://reqres.in/api/orders")
-//   .then(res => { console.log(res.data)})
-//   .catch(err => console.error(err))
-// }
-
-
-//post
-// const postNewOrder = newOrder => {
-  
-// };
 
 const validate = (name, value) => {
   yup.reach(schema, name).validate(value)
@@ -73,14 +62,14 @@ const formSubmit = () => {
 const newOrder = {
   name: formValues.name.trim(),
   size: formValues.size,
-  toppings: ["pepperoni", "sausage", "olives", "chicken"].filter(top => !!formValues[top]),
+  toppings: ["pepperoni", "ham", "olives", "chicken"].filter(top => !!formValues[top]),
   special: formValues.special
 }
 axios.post(`https://reqres.in/api/orders`, newOrder)
   .then(res => {
-    setOrderHistory([res.data, ...orderHistory]);
+    console.log([res.data, ...orderHistory]);
     setFormValues(initialFormValues);
-    setFormErrors('');
+     setFormErrors('');
   })
 
 }

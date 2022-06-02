@@ -13,7 +13,7 @@ size: yup
 .oneOf(["personal", "medium", "large"]),
 
 pepperoni: yup.boolean(),
-sausage: yup.boolean(),
+ham: yup.boolean(),
 olives: yup.boolean(),
 chicken: yup.boolean(),
 

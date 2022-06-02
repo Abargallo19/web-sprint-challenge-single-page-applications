@@ -13,7 +13,7 @@ export default function Confirm(props) {
         <div className="confirm-container">
             <h2>{details.name}</h2>
             <p>Size: {details.size}</p>
-            <p>Toppings: {details.pepperoni}</p>
+            <p>Toppings: {details}</p>
             <p>Special Instructs: {details.special}</p>
         </div>
     )
