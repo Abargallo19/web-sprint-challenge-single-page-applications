@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+//https://reqres.in/api/orders
 import { Route, Link, Switch } from "react-router-dom";
 import Home from "./Components/Homepage";
 import Form from "./Components/OrderForm";
+import Confirm from "./Components/Confirmation";
 
 const initialFormValues = {
   //text
@@ -37,6 +39,7 @@ const App = () => {
 const [orderHistory, setOrderHistory] = useState(pastOrders);
 const [formValues,setFormValues] = useState(initialFormValues);
 const [formErrors, setFormErrors] = useState(initialFormErrors);
+const [disabled, setDisabled] = useState(initialDisabled);
 
 //event handlers
 const inputChange = (name, value) => {
@@ -73,7 +76,13 @@ const newOrder = {
 
     <Switch>
       <Route path="/pizza">
-        <Form />
+        <Form 
+          values= {formValues}
+          errors={formErrors}
+          submit={formSubmit}
+          change={inputChange}
+          disabled={disabled}
+        />
       </Route>
       <Route path="/">
         <Home />
