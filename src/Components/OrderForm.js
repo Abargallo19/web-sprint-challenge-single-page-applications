@@ -28,6 +28,7 @@ return ( <form id="pizza-form" onSubmit={onSubmit}>
             <h3>What's the Name for the Order?</h3>
             <label>Name
                 <input
+                id='name-input'
                 name='name'
                 value={values.name}
                 onChange={onChange}
@@ -38,6 +39,7 @@ return ( <form id="pizza-form" onSubmit={onSubmit}>
 
             <label>Size
                <select
+               id='size-dropdown'
                onChange={onChange}
                value={values.size}
                name='size'
