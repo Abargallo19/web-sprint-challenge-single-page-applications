@@ -86,7 +86,7 @@ const App = () => {
           <Link to="/pizza">Let's Order</Link>
         </div>
       </nav>
-      <header>We Hope You're Hungry!</header>
+      <header>Aloha! We Hope You're Hungry!</header>
 
       <Switch>
         <Route path="/pizza">
