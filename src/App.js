@@ -6,7 +6,8 @@ import { Route, Link, Switch } from "react-router-dom";
 import Home from "./Components/Homepage";
 import Form from "./Components/OrderForm";
 // import Confirm from "./Components/Confirmation";
-import "bootstrap/dist/css/bootstrap.min.css";
+import Navbar from "./Components/Navbar/index";
+
 
 const initialFormValues = {
   name: "",
@@ -84,6 +85,7 @@ const App = () => {
         <div className="nav-links">
           <Link to="/">Home</Link>
           <Link to="/pizza">Let's Order</Link>
+          <Navbar />
         </div>
       </nav>
       <header>Aloha! We Hope You're Hungry!</header>
